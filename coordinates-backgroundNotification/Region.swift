@@ -7,3 +7,21 @@
 //
 
 import Foundation
+import CoreLocation
+
+class Region {
+    var coordinate: CLLocationCoordinate2D
+    var radius: CLLocationDistance
+    var identifier : String
+    
+    init(_ coordinate:CLLocationCoordinate2D , _ radius: CLLocationDistance, _ identifier: String) {
+        self.coordinate = coordinate
+        self.radius = radius
+        self.identifier = identifier
+    }
+    
+    func getCLCircularRegion() {
+        
+    }
+    
+}
