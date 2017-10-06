@@ -23,6 +23,14 @@ class MapViewController: UIViewController {
         
         locationManager.requestAlwaysAuthorization()
         
+        let applePin = Pin(coordinate: CLLocationCoordinate2DMake(37.331695,-122.0322801), identifier: "Apple",subtitle: nil, notificationText: "Enter Apple!!")
+        
+        startMonitoring(applePin.region)
+        
+        
+        
+        
+        mapview.addAnnotation(applePin);
         
         // Do any additional setup after loading the view, typically from a nib.
     }

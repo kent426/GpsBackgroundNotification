@@ -8,9 +8,10 @@
 
 import UIKit
 import CoreLocation
+import UserNotifications
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDelegate {
 
     var window: UIWindow?
     
@@ -21,6 +22,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         locationManager.delegate = self
         locationManager.requestAlwaysAuthorization()
+        
+        
+        UNUserNotificationCenter.current().delegate = self
+        
+    
+        
+        let notificationCenter = UNUserNotificationCenter.current()
+        notificationCenter.requestAuthorization(options: [.alert, .badge, .sound]) { (success, error) in
+            if error == nil {
+                if success == true {
+                    print("Permission granted")
+                    notificationCenter.removeAllDeliveredNotifications()
+                }
+                else {
+                    print("Permission denied")
+                }
+            } else {
+                print(error!)
+            }
+        }
         
         
         return true
@@ -53,8 +74,51 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 extension AppDelegate: CLLocationManagerDelegate {
     
+    
+    
     func handleEvent(forRegion region: CLRegion!) {
+        
         print("Geofence triggered!")
+        
+        // Show an alert if application is active
+        if UIApplication.shared.applicationState == .active {
+                let message = region.identifier
+                window?.rootViewController?.showAlert(withTitle: nil, message: message)
+        } else {
+            
+            
+            // Otherwise present a local notification
+            let notification = UILocalNotification()
+            notification.alertBody = region.identifier
+            notification.soundName = "Default"
+            UIApplication.shared.presentLocalNotificationNow(notification)
+            
+            // Otherwise present a local notification
+            // Swift
+//        let center = UNUserNotificationCenter.current()
+//            let content = UNMutableNotificationContent()
+//            content.title = "Enter region"
+//            content.body = region.identifier
+//            content.sound = UNNotificationSound.default()
+//
+//
+//
+//            let trigger = UNLocationNotificationTrigger(region:region, repeats:false)
+//
+//            let identifier = "enteringRegionNotification"
+//            let request = UNNotificationRequest(identifier: identifier,
+//                                                content: content, trigger: trigger)
+//
+//            center.add(request, withCompletionHandler: { (error) in
+//                if let error = error {
+//                    print(error)
+//                }
+//            })
+            
+            
+        }
+        
+        
     }
     
     func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
@@ -67,5 +131,15 @@ extension AppDelegate: CLLocationManagerDelegate {
         if region is CLCircularRegion {
             handleEvent(forRegion: region)
         }
+    }
+}
+
+// MARK: Helper Extensions
+extension UIViewController {
+    func showAlert(withTitle title: String?, message: String?) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        alert.addAction(action)
+        present(alert, animated: true, completion: nil)
     }
 }

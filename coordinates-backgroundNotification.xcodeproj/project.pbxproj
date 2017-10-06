@@ -15,7 +15,7 @@
 		E966E5971F85AA96004C214B /* coordinates_backgroundNotificationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E966E5961F85AA96004C214B /* coordinates_backgroundNotificationTests.swift */; };
 		E966E5A21F85AA96004C214B /* coordinates_backgroundNotificationUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E966E5A11F85AA96004C214B /* coordinates_backgroundNotificationUITests.swift */; };
 		E966E5B11F85AD5C004C214B /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E966E5B01F85AD5C004C214B /* MapKit.framework */; };
-		E966E5B41F85B053004C214B /* Region.swift in Sources */ = {isa = PBXBuildFile; fileRef = E966E5B31F85B053004C214B /* Region.swift */; };
+		E966E5B41F85B053004C214B /* Pin.swift in Sources */ = {isa = PBXBuildFile; fileRef = E966E5B31F85B053004C214B /* Pin.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +36,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		475510201F87026C00BAB619 /* TestLocations.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = TestLocations.gpx; path = "coordinates-backgroundNotification/TestLocations.gpx"; sourceTree = SOURCE_ROOT; };
+		475510231F873CC800BAB619 /* AppleLocation.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = AppleLocation.gpx; sourceTree = "<group>"; };
 		E966E57E1F85AA95004C214B /* coordinates-backgroundNotification.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "coordinates-backgroundNotification.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E966E5811F85AA95004C214B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E966E5831F85AA95004C214B /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -50,7 +52,7 @@
 		E966E5A11F85AA96004C214B /* coordinates_backgroundNotificationUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = coordinates_backgroundNotificationUITests.swift; sourceTree = "<group>"; };
 		E966E5A31F85AA96004C214B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E966E5B01F85AD5C004C214B /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		E966E5B31F85B053004C214B /* Region.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Region.swift; sourceTree = "<group>"; };
+		E966E5B31F85B053004C214B /* Pin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pin.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,7 +109,7 @@
 				E966E5811F85AA95004C214B /* AppDelegate.swift */,
 				E966E5831F85AA95004C214B /* MapViewController.swift */,
 				E966E5851F85AA95004C214B /* Main.storyboard */,
-				E966E5B31F85B053004C214B /* Region.swift */,
+				E966E5B31F85B053004C214B /* Pin.swift */,
 			);
 			path = "coordinates-backgroundNotification";
 			sourceTree = "<group>";
@@ -141,6 +143,8 @@
 		E966E5B21F85AFF6004C214B /* supporting files */ = {
 			isa = PBXGroup;
 			children = (
+				475510231F873CC800BAB619 /* AppleLocation.gpx */,
+				475510201F87026C00BAB619 /* TestLocations.gpx */,
 				E966E5881F85AA95004C214B /* Assets.xcassets */,
 				E966E58A1F85AA95004C214B /* LaunchScreen.storyboard */,
 				E966E58D1F85AA95004C214B /* Info.plist */,
@@ -290,7 +294,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E966E5B41F85B053004C214B /* Region.swift in Sources */,
+				E966E5B41F85B053004C214B /* Pin.swift in Sources */,
 				E966E5841F85AA95004C214B /* MapViewController.swift in Sources */,
 				E966E5821F85AA95004C214B /* AppDelegate.swift in Sources */,
 			);
@@ -447,6 +451,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "coordinates-backgroundNotification/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "kenth.coordinates-backgroundNotification";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -459,6 +464,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "coordinates-backgroundNotification/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "kenth.coordinates-backgroundNotification";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -539,6 +545,7 @@
 				E966E5A81F85AA96004C214B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E966E5A91F85AA96004C214B /* Build configuration list for PBXNativeTarget "coordinates-backgroundNotificationTests" */ = {
 			isa = XCConfigurationList;
@@ -547,6 +554,7 @@
 				E966E5AB1F85AA96004C214B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E966E5AC1F85AA96004C214B /* Build configuration list for PBXNativeTarget "coordinates-backgroundNotificationUITests" */ = {
 			isa = XCConfigurationList;
@@ -555,6 +563,7 @@
 				E966E5AE1F85AA96004C214B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
